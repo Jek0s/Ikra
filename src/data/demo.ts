@@ -1,0 +1,96 @@
+import type { Product } from '../types';
+
+// Демонстраційні товари для локального режиму.
+// Усі ціни та характеристики можна змінювати в адмін-панелі.
+export const demoProducts: Product[] = [
+  {
+    id: 'c1',
+    name: 'Кета преміум',
+    subtitle: 'Преміальна червона ікра',
+    category: 'red',
+    price: 699,
+    old_price: 1200,
+    weight: '500 г',
+    image: '/products/keta.webp',
+    description:
+      'Консистенція: Суха, не більше 6% рідини\nРозмір: 5–7 мм в діаметрі\nКолір: Яскраво-оранжевий\nТара: Скляна банка',
+    badge: 'PREMIUM',
+    active: true,
+    featured: true,
+  },
+  {
+    id: 'c2',
+    name: 'Кижуча',
+    subtitle: 'Виразний смак для поціновувачів',
+    category: 'red',
+    price: 549,
+    old_price: 900,
+    weight: '500 г',
+    image: '/products/coho.webp',
+    description:
+      'Консистенція: Суха, не більше 6% рідини\nРозмір: 4–6 мм в діаметрі\nКолір: Червоний\nТара: Скляна банка',
+    badge: 'АКЦІЯ',
+    active: true,
+    featured: false,
+  },
+  {
+    id: 'c3',
+    name: 'Лосось',
+    subtitle: 'Класика святкового столу',
+    category: 'red',
+    price: 599,
+    old_price: 1000,
+    weight: '500 г',
+    image: '/products/salmon.webp',
+    description:
+      'Консистенція: Суха, не більше 6% рідини\nРозмір: 5–7 мм в діаметрі\nКолір: Яскраво-оранжевий\nТара: Скляна банка',
+    badge: 'ХІТ ПРОДАЖУ',
+    active: true,
+    featured: true,
+  },
+  {
+    id: 'c4',
+    name: 'Горбуша',
+    subtitle: 'Ніжна текстура та яскравий смак',
+    category: 'red',
+    price: 549,
+    old_price: 900,
+    weight: '500 г',
+    image: '/products/orange.svg',
+    description:
+      'Консистенція: Суха, не більше 6% рідини\nРозмір: 3–5 мм в діаметрі\nКолір: Яскраво-червоний\nТара: Скляна банка',
+    badge: 'АКЦІЯ',
+    active: true,
+    featured: false,
+  },
+  {
+    id: 'c5',
+    name: 'Веслоніс',
+    subtitle: 'Ікра родини осетрових',
+    category: 'black',
+    price: 699,
+    old_price: 1200,
+    weight: '500 г',
+    image: '/products/paddlefish.webp',
+    description:
+      'Консистенція: Суха, не більше 6% рідини\nРозмір: 2.2 мм в діаметрі\nКолір: Чорний\nТара: Скляна банка',
+    badge: 'ОСОБЛИВА',
+    active: true,
+    featured: true,
+  },
+  {
+    id: 'c6',
+    name: 'Щука',
+    subtitle: 'Делікатес світлого бурштину',
+    category: 'other',
+    price: 549,
+    old_price: 900,
+    weight: '500 г',
+    image: '/products/pike.webp',
+    description:
+      'Консистенція: Суха, не більше 6% рідини\nРозмір: 2–3 мм в діаметрі\nКолір: Світлого бурштину\nТара: Скляна банка',
+    badge: 'АКЦІЯ',
+    active: true,
+    featured: false,
+  },
+];
