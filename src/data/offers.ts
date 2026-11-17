@@ -1,6 +1,19 @@
 export type OfferBundle = {id:string;title:string;promo:string;description:string;image:string;weight:string;price:number;oldPrice:number;items:string[];note:string;active:boolean};
 export const demoOffers: OfferBundle[] = [
   {
+    id: 'maxi',
+    title: 'Maxi — уся колекція смаків',
+    promo: '7 СМАКІВ',
+    description: 'Сім видів ікри по 500 г: кета, кижуч, лосось, горбуша, веслоніс, щука та голець. Велика дегустація в одному наборі.',
+    image: '/offers/maxi.png',
+    weight: '3,5 кг',
+    price: 1999,
+    oldPrice: 4893,
+    items: ['Кета преміум — 500 г', 'Кижуч — 500 г', 'Лосось — 500 г', 'Горбуша — 500 г', 'Веслоніс — 500 г', 'Щука — 500 г', 'Голець — 500 г'],
+    note: '7 баночок · ≈286 грн за баночку · економія 2 894 грн',
+    active: true,
+  },
+  {
     id: 'bundle-1',
     title: 'Лосось • Горбуша • Кета преміум',
     promo: '1+1=3',
@@ -79,4 +92,3 @@ export const demoOffers: OfferBundle[] = [
     active: true,
   },
 ];
-

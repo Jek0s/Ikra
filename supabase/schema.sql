@@ -99,3 +99,35 @@ create policy "admin remove product images" on storage.objects for delete to aut
 -- Якщо стара таблиця вже створена зі старим обмеженням category:
 -- ALTER TABLE public.products DROP CONSTRAINT IF EXISTS products_category_check;
 -- ALTER TABLE public.products ADD CONSTRAINT products_category_check CHECK(category IN ('red','black','sets','other'));
+
+-- Website sections: text, images, lists, visibility and public contacts.
+create table if not exists public.site_content (
+ id text primary key check (id = 'main'),
+ content jsonb not null default '{}'::jsonb check (jsonb_typeof(content) = 'object'),
+ updated_at timestamptz not null default now()
+);
+alter table public.site_content enable row level security;
+drop policy if exists "public read site content" on public.site_content;
+create policy "public read site content" on public.site_content
+ for select to anon, authenticated using (true);
+grant select on public.site_content to anon, authenticated;
+
+-- Only administrators may publish; merge one section atomically to retain other edits.
+create or replace function public.save_site_section(p_section text, p_content jsonb)
+returns void language plpgsql security definer set search_path = '' as $$
+begin
+ if not public.is_shop_admin() then raise exception 'Немає прав адміністратора'; end if;
+ if p_section is null or p_section not in (
+  'header','ticker','promotion','hero','benefits','promo','offers','catalog','about',
+  'featured','delivery','quotes','reviews','faq','instagram','cta','footer','contacts','seo'
+ ) then raise exception 'Невідомий розділ'; end if;
+ if p_content is null or jsonb_typeof(p_content) <> 'object' then
+  raise exception 'Некоректний вміст розділу'; end if;
+ insert into public.site_content(id,content)
+ values ('main', jsonb_build_object(p_section,p_content))
+ on conflict (id) do update
+ set content = public.site_content.content || excluded.content, updated_at = now();
+end;
+$$;
+revoke all on function public.save_site_section(text,jsonb) from public;
+grant execute on function public.save_site_section(text,jsonb) to authenticated;

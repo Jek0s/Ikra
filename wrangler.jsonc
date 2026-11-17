@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ikra-deluxe",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-18",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "ikra-deluxe",
+    "database_id": "59374abb-73a3-4c1a-a265-2c3bb3a97750",
+    "migrations_dir": "migrations"
+  }],
+  "triggers": { "crons": ["*/5 * * * *"] },
+  "observability": { "enabled": false }
+}

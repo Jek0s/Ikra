@@ -4,7 +4,7 @@ import { useShop } from '../context/ShopContext';
 import type { OfferBundle } from '../data/offers';
 import { deleteOffer, saveOffer } from '../lib/offers';
 import { uploadProductImage } from '../lib/store';
-import { cloudMode } from '../lib/supabase';
+import { cloudMode } from '../lib/backend';
 import '../pages/AdminPage.css';
 
 const blankOffer = (): OfferBundle => ({
@@ -37,7 +37,7 @@ export default function OffersAdmin() {
     setBusy(true);
     setError('');
     try {
-      saveOffer({ ...editor, title: editor.title.trim(), items: itemsText.split('\n').map(s => s.trim()).filter(Boolean) });
+      await saveOffer({ ...editor, title: editor.title.trim(), items: itemsText.split('\n').map(s => s.trim()).filter(Boolean) });
       await reload();
       setEditor(null);
       setNotice('Акцію збережено. Зміни вже видно в каруселі магазину.');
@@ -81,9 +81,9 @@ export default function OffersAdmin() {
   };
   const remove = async (id: string) => {
     if (!window.confirm('Видалити цей акційний набір?')) return;
-    deleteOffer(id);
-    await reload();
-    setNotice('Акцію видалено.');
+    setError('');
+    try { await deleteOffer(id); await reload(); setNotice('Акцію видалено.'); }
+    catch (reason) { setError(reason instanceof Error ? reason.message : 'Не вдалося видалити акцію'); }
   };
 
   return <>
@@ -92,6 +92,7 @@ export default function OffersAdmin() {
         <div><h2>Акційні набори <span className="light-number">({offers.length})</span></h2><p>Редагуйте склад набору, фотографії, описи, ціни та публікацію.</p></div>
         <button className="btn-primary" onClick={() => edit(blankOffer())}><Plus size={18}/> Додати акцію</button>
       </div>
+      {error && !editor && <p className="form-error" role="alert">{error}</p>}
       {notice && <p className="admin-alert"><Gift size={17}/>{notice}</p>}
       <div className="admin-table-wrap"><table className="admin-table"><thead><tr><th>НАБІР</th><th>АКЦІЯ</th><th>ЦІНА</th><th>СТАТУС</th><th>ДІЇ</th></tr></thead><tbody>
         {offers.map(offer => <tr key={offer.id}>

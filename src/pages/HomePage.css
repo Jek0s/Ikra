@@ -40,3 +40,68 @@
 @media(max-width:720px){.quote-bottom--carousel{justify-content:center;text-align:center}.quote-dots{justify-content:center;width:100%}}
 
 .footer-top--public{grid-template-columns:2fr 1fr 1fr}
+
+/* IKRA DeLuxe — адаптивный каталог */
+
+@media (min-width: 901px) {
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+        align-items: stretch;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 600px) {
+    .product-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+        align-items: stretch;
+    }
+
+    .catalog-section .section-header h2 {
+        font-size: clamp(32px, 8vw, 42px);
+        line-height: 1.14;
+        overflow-wrap: break-word;
+    }
+
+    .catalog-tabs {
+        gap: 8px;
+        margin: 24px 0;
+    }
+
+    .catalog-tabs button {
+        padding: 10px 13px;
+        font-size: 11px;
+    }
+
+    .hero-copy {
+        min-width: 0;
+    }
+
+    .hero h1 {
+        font-size: clamp(43px, 10vw, 62px);
+        line-height: 1.09;
+        letter-spacing: -0.04em;
+    }
+
+    .hero-description {
+        max-width: 100%;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .hero-buttons {
+        align-items: stretch;
+    }
+}

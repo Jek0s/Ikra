@@ -1,1 +1,41 @@
-{"name":"ikra-deluxe","private":true,"version":"1.0.0","type":"module","scripts":{"dev":"vite --host 0.0.0.0","build":"tsc -b && vite build","preview":"vite preview --host 0.0.0.0"},"dependencies":{"@supabase/supabase-js":"^2.57.0","lucide-react":"^0.468.0","react":"^19.1.0","react-dom":"^19.1.0","react-router-dom":"^7.6.0"},"devDependencies":{"@types/node":"^22.15.0","@types/react":"^19.1.0","@types/react-dom":"^19.1.0","@vitejs/plugin-react":"^4.5.0","typescript":"~5.8.3","vite":"^6.3.0"}}
+{
+  "name": "ikra-deluxe",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "npm run typecheck && vite build",
+    "preview": "wrangler dev --ip 127.0.0.1 --port 8787",
+    "typecheck": "tsc -b && tsc -p tsconfig.worker.json",
+    "dev:cloudflare": "npm run build && wrangler dev --ip 127.0.0.1 --port 8787",
+    "db:local": "wrangler d1 migrations apply DB --local",
+    "db:remote": "node scripts/check-cloudflare.mjs && wrangler d1 migrations apply DB --remote",
+    "admin:local": "node scripts/setup-admin.mjs",
+    "admin:remote": "node scripts/setup-admin.mjs --remote",
+    "photos:setup": "node scripts/setup-photos.mjs",
+    "deploy": "node scripts/check-cloudflare.mjs && npm run build && wrangler deploy",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261018.1",
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.5.0",
+    "esbuild": "^0.25.12",
+    "miniflare": "^5.20261012.1-beta",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.0",
+    "wrangler": "^4.151.1"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  }
+}

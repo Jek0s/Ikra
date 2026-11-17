@@ -1,0 +1,12 @@
+# Run npm run admin:local to generate the admin credentials in .dev.vars.
+# These are Worker secrets, never VITE_ variables.
+ADMIN_LOGIN=
+ADMIN_PASSWORD_SHA256=
+SESSION_SECRET=
+# Optional Telegram notifications:
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_CHAT_ID=
+# Optional Cloudinary image uploads:
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=

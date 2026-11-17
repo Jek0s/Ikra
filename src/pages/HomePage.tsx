@@ -1,3 +1,4 @@
+import { useSiteContent } from '../context/SiteContentContext';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowDown,
@@ -18,42 +19,15 @@ import Header from '../components/Header';
 import LuxuryFaq from '../components/LuxuryFaq';
 import ProductCard from '../components/ProductCard';
 import RoeMark from '../components/RoeMark';
+import { PromotionBanner, PromoTicker, ReviewsCarousel } from '../components/StorefrontExtras';
+import ContactWidget from '../components/ContactWidget';
 import { useShop } from '../context/ShopContext';
 import type { Category, Product } from '../types';
 import type { OfferBundle } from '../data/offers';
-import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from '../config/contact';
 import './HomePage.css';
 import './HomeExtras.css';
 
 type Filter = 'all' | Category;
-
-type QuoteItem = {
-  id: string;
-  text: string;
-  accent: string;
-  detail: string;
-};
-
-const quoteItems: QuoteItem[] = [
-  {
-    id: 'q1',
-    text: 'Найкращі моменти — ті, у яких ми дозволяємо собі',
-    accent: 'трохи більше.',
-    detail: 'IKRA DeLuxe — для моментів, які хочеться смакувати повільно.',
-  },
-  {
-    id: 'q2',
-    text: 'Справжня розкіш починається з уваги до деталей і',
-    accent: 'чесного смаку.',
-    detail: 'Ми віримо в красиву подачу, якісний продукт і особливу атмосферу.',
-  },
-  {
-    id: 'q3',
-    text: 'Мистецтво жити красиво — це вміти обирати для себе',
-    accent: 'найкраще.',
-    detail: 'Саме тому колекція IKRA DeLuxe створена для тих, хто цінує естетику.',
-  },
-];
 
 function getSpecs(product: Product): string[] {
   return product.description
@@ -63,6 +37,8 @@ function getSpecs(product: Product): string[] {
 }
 
 export default function HomePage() {
+  const { text, visible, items, contacts } = useSiteContent();
+  const quoteItems = items('quotes');
   const { products, offers, add, loading, error, setCartOpen } = useShop();
   const offerBundles: OfferBundle[] = offers.filter(offer => offer.active);
   const [filter, setFilter] = useState<Filter>('all');
@@ -93,17 +69,18 @@ export default function HomePage() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [visible]);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setQuoteIndex((prev) => (prev + 1) % quoteItems.length);
+      setQuoteIndex((prev) => (prev + 1) % Math.max(1, quoteItems.length));
     }, 4500);
 
     return () => window.clearInterval(timer);
-  }, []);
+  }, [quoteItems.length]);
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const timer = window.setInterval(() => {
       const el = offerCarouselRef.current;
       if (!el || offerPaused.current || document.hidden) return;
@@ -117,10 +94,11 @@ export default function HomePage() {
   }, []);
 
   const tabs: { id: Filter; label: string }[] = [
-    { id: 'all', label: 'Вся колекція' },
-    { id: 'red', label: 'Червона ікра' },
-    { id: 'black', label: 'Чорна ікра' },
-    { id: 'other', label: 'Щуча ікра' },
+    { id: 'all', label: text('catalog', 'all') },
+    { id: 'red', label: text('catalog', 'red') },
+    { id: 'black', label: text('catalog', 'black') },
+    { id: 'other', label: text('catalog', 'other') },
+    { id: 'sets', label: text('catalog', 'sets') },
   ];
 
   const shown = products.filter((product) => !product.id.startsWith('offer:') && product.active && (filter === 'all' || product.category === filter));
@@ -131,7 +109,7 @@ export default function HomePage() {
     [products],
   );
 
-  const currentQuote = quoteItems[quoteIndex];
+  const currentQuote = quoteItems[quoteIndex % Math.max(1, quoteItems.length)] ?? { text: '', accent: '', detail: '' };
 
   const scrollOffers = (direction: 'prev' | 'next') => {
     const track = offerCarouselRef.current;
@@ -153,50 +131,45 @@ export default function HomePage() {
       <Header />
 
       <main>
-        <section className="hero" id="top">
+        {visible('ticker') && items('ticker').length > 0 && <PromoTicker />}
+        {visible('promotion') && <PromotionBanner />}
+        {visible('hero') && <section className="hero" id="top">
           <div className="hero-noise" />
 
           <div className="container hero-content">
             <div className="hero-copy">
               <div className="hero-kicker">
-                <span className="kicker-line" /> IKRA DELUXE · PREMIUM COLLECTION <span className="kicker-line" />
+                <span className="kicker-line" /> {text('hero', 'text1')}<span className="kicker-line" />
               </div>
 
-              <p className="hero-sup">Делікатеси для виняткових моментів</p>
+              <p className="hero-sup">{text('hero', 'text2')}</p>
 
               <h1>
-                IKRA <i>DeLuxe.</i>
+                {text('hero', 'text3')}<i>{text('hero', 'text4')}</i>
                 <br />
-                Мистецтво
-                <br />
-                насолоди.
-              </h1>
+                {text('hero', 'text5')}<br />
+                {text('hero', 'text6')}</h1>
 
               <p className="hero-description">
-                Справжня ікра, естетика кожної деталі та особливе задоволення від першої до останньої ікринки.
-                Відкрийте колекцію IKRA DeLuxe.
-              </p>
+                {text('hero', 'text7')}</p>
 
               <div className="hero-buttons">
                 <a href="#catalog" className="btn-gold">
-                  Обрати делікатеси <ArrowUpRight size={19} />
+                  {text('hero', 'text8')}<ArrowUpRight size={19} />
                 </a>
 
                 <a className="hero-discover" href="#about">
                   <span>
                     <ArrowDown size={19} />
                   </span>
-                  Наш підхід
-                </a>
+                  {text('hero', 'text9')}</a>
               </div>
 
               <div className="hero-micro">
                 <span>
-                  <ShieldCheck size={17} /> Уважний відбір
-                </span>
+                  <ShieldCheck size={17} /> {text('hero', 'text10')}</span>
                 <span>
-                  <Truck size={17} /> Доставка по Україні
-                </span>
+                  <Truck size={17} /> {text('hero', 'text11')}</span>
               </div>
             </div>
 
@@ -209,73 +182,68 @@ export default function HomePage() {
 
               <div className="hero-orbit orbit-one" />
               <div className="hero-orbit orbit-two" />
-              <span className="hero-art-word">IKRA</span>
+              <span className="hero-art-word">{text('hero', 'text12')}</span>
 
               <div className="hero-product">
-                <img className="hero-lid" src="/ikra-deluxe-logo.png" alt="Фірмова кришка IKRA DeLuxe" />
+                <img className="hero-lid" src={text('hero', 'field13')} alt={text('hero', 'field14')} />
               </div>
 
               <div className="hero-stamp">
-                IKRA
-                <br />
-                DELUXE <span>●</span>
+                {text('hero', 'text15')}<br />
+                {text('hero', 'text16')}<span>●</span>
               </div>
 
               <div className="hero-small-detail">
-                <span>IKRA DeLuxe</span>
-                <div className="detail-rule" /> THE TASTE OF LUXURY
-              </div>
+                <span>{text('hero', 'text17')}</span>
+                <div className="detail-rule" /> {text('hero', 'text18')}</div>
             </div>
 
-            <div className="hero-side-label">IKRA DELUXE · ВИШУКАНІ ДЕЛІКАТЕСИ</div>
+            <div className="hero-side-label">{text('hero', 'text19')}</div>
           </div>
-        </section>
+        </section>}
 
-        <section className="benefits">
+        {visible('benefits') && <section className="benefits">
           <div className="container benefits-inner">
             <div>
               <RoeMark />
-              <span>Культура смаку</span>
+              <span>{text('benefits', 'text1')}</span>
             </div>
             <div>
               <Award />
-              <span>Ретельна селекція</span>
+              <span>{text('benefits', 'text2')}</span>
             </div>
             <div>
               <PackageCheck />
-              <span>Турботлива упаковка</span>
+              <span>{text('benefits', 'text3')}</span>
             </div>
             <div>
               <Gift />
-              <span>Для особливих подій</span>
+              <span>{text('benefits', 'text4')}</span>
             </div>
           </div>
-        </section>
+        </section>}
 
-        <section className="promo-section" id="offers">
+        {visible('promo') && <section className="promo-section" id="offers">
           <div className="container promo-section__inner">
             <div className="promo-section__copy">
-              <span className="eyebrow promo-section__eyebrow">АКЦІЇ IKRA DELUXE</span>
+              <span className="eyebrow promo-section__eyebrow">{text('promo', 'text1')}</span>
               <h2>
-                Вигода, що <em>виглядає розкішно.</em>
+                {text('promo', 'text2')}<em>{text('promo', 'text3')}</em>
               </h2>
               <p>
-                Ми підготували спеціальні акції для тих, хто хоче замовити більше та обрати вигідніше. Преміальні
-                набори, красиві поєднання смаків і особливі ціни — усе в дусі IKRA DeLuxe.
-              </p>
+                {text('promo', 'text4')}</p>
 
               <div className="promo-section__actions">
                 <a href="#offers-grid" className="btn-gold">
-                  Переглянути акції <ArrowUpRight size={18} />
+                  {text('promo', 'text5')}<ArrowUpRight size={18} />
                 </a>
                 <a
-                  href="https://www.instagram.com/_ikra_deluxe_ua/"
+                  href={contacts.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="promo-section__ghost-link"
                 >
-                  Instagram бренду
-                </a>
+                  {text('promo', 'text6')}</a>
               </div>
             </div>
 
@@ -289,25 +257,25 @@ export default function HomePage() {
                   <h3>{product.name}</h3>
                   <p className="promo-card__subtitle">{product.subtitle}</p>
                   <div className="promo-card__prices">
-                    <strong>{product.price.toLocaleString('uk-UA')} ₴</strong>
-                    {product.old_price && product.old_price > product.price ? <s>{product.old_price.toLocaleString('uk-UA')} ₴</s> : null}
+                    <strong>{product.price.toLocaleString('uk-UA')} {text('promo', 'text7')}</strong>
+                    {product.old_price && product.old_price > product.price ? <s>{product.old_price.toLocaleString('uk-UA')} {text('promo', 'text8')}</s> : null}
                   </div>
                   <p className="promo-card__detail">{getSpecs(product).find(spec => spec.startsWith('Колір:')) ?? 'Делікатеси IKRA DeLuxe'}</p>
                 </article>
               ))}
             </div>
           </div>
-        </section>
+        </section>}
 
-        <section className="offers-section" id="offers-grid">
+        {visible('offers') && <section className="offers-section" id="offers-grid">
           <div className="container">
             <div className="section-header offers-section__header">
               <div>
-                <span className="eyebrow">АКЦІЙНІ НАБОРИ</span>
+                <span className="eyebrow">{text('offers', 'text1')}</span>
                 <h2>
-                  Готові рішення для <em>вигідного замовлення.</em>
+                  {text('offers', 'text2')}<em>{text('offers', 'text3')}</em>
                 </h2>
-                <p>Оберіть набір, який ідеально підійде для себе, у подарунок або до святкового столу.</p>
+                <p>{text('offers', 'text4')}</p>
               </div>
             </div>
 
@@ -331,18 +299,19 @@ export default function HomePage() {
                       </div>
                       <div className="offer-card__body">
                         <div className="offer-card__topline">
-                          <span className="offer-card__eyebrow">НАБІР IKRA DELUXE</span>
+                          <span className="offer-card__eyebrow">{text('offers', 'text5')}</span>
                           <span className="offer-card__note">{bundle.weight}</span>
                         </div>
                         <h3>{bundle.title}</h3>
-                        <p className="offer-card__description">{bundle.description}</p>
+                        <p className={`offer-card__description${bundle.id === 'maxi' ? ' offer-card__description--full' : ''}`}>{bundle.description}</p>
+                        {bundle.id === 'maxi' && <p className="offer-card__saving">{bundle.note}</p>}
                         <div className="offer-card__bottom">
                           <div className="offer-card__prices">
-                            <strong>{bundle.price.toLocaleString('uk-UA')} ₴</strong>
-                            {bundle.oldPrice > bundle.price ? <s>{bundle.oldPrice.toLocaleString('uk-UA')} ₴</s> : null}
+                            <strong>{bundle.price.toLocaleString('uk-UA')} {text('offers', 'text6')}</strong>
+                            {bundle.oldPrice > bundle.price ? <s>{bundle.oldPrice.toLocaleString('uk-UA')} {text('offers', 'text7')}</s> : null}
                           </div>
                           <button type="button" className="offer-card__button" onClick={() => add(`offer:${bundle.id}`)}>
-                            Замовити <ArrowUpRight size={16} />
+                            {text('offers', 'text8')}<ArrowUpRight size={16} />
                           </button>
                         </div>
                       </div>
@@ -352,21 +321,21 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-        </section>
+        </section>}
 
-        <section id="catalog" className="section catalog-section">
+        {visible('catalog') && <section id="catalog" className="section catalog-section">
           <div className="container">
             <div className="section-header">
               <div>
-                <span className="eyebrow">КОЛЕКЦІЯ IKRA DELUXE</span>
+                <span className="eyebrow">{text('catalog', 'text1')}</span>
                 <h2>
-                  Виняткове — <em>поруч.</em>
+                  {text('catalog', 'text2')}<em>{text('catalog', 'text3')}</em>
                 </h2>
-                <p>Виберіть делікатес для вашого особливого моменту.</p>
+                <p>{text('catalog', 'text4')}</p>
               </div>
 
               <div className="catalog-counter">
-                ОБРАНО З ЛЮБОВ’Ю <RoeMark />
+                {text('catalog', 'text5')}<RoeMark />
               </div>
             </div>
 
@@ -378,10 +347,10 @@ export default function HomePage() {
               ))}
             </div>
 
-            {error ? <p className="form-error">Помилка завантаження: {error}</p> : null}
+            {error ? <p className="form-error">{text('catalog', 'text6')}{error}</p> : null}
 
             {loading ? (
-              <p>Завантажуємо колекцію...</p>
+              <p>{text('catalog', 'text7')}</p>
             ) : shown.length ? (
               <div className="product-grid">
                 {shown.map((product, index) => (
@@ -389,54 +358,49 @@ export default function HomePage() {
                 ))}
               </div>
             ) : (
-              <div className="empty-products">У цій категорії поки немає товарів.</div>
+              <div className="empty-products">{text('catalog', 'text8')}</div>
             )}
           </div>
-        </section>
+        </section>}
 
-        <section className="story-section" id="about">
+        {visible('about') && <section className="story-section" id="about">
           <div className="story-visual">
             <div className="story-plate">
-              <img src="/products/paddlefish.webp" alt="Ікра веслоноса" />
+              <img src={text('about', 'field1')} alt={text('about', 'field2')} />
             </div>
             <div className="story-caption">
-              GOOD TASTE IS TIMELESS <RoeMark />
+              {text('about', 'text3')}<RoeMark />
             </div>
           </div>
 
           <div className="story-copy">
-            <span className="eyebrow">ФІЛОСОФІЯ СМАКУ</span>
+            <span className="eyebrow">{text('about', 'text4')}</span>
             <h2>
-              Розкіш — <em>у простих</em> моментах.
-            </h2>
+              {text('about', 'text5')}<em>{text('about', 'text6')}</em> {text('about', 'text7')}</h2>
             <p>
-              Ми віримо, що особливі миті народжуються з деталей: красиво накритий стіл, близькі поруч та смак, заради
-              якого хочеться зупинити час.
-            </p>
+              {text('about', 'text8')}</p>
             <p>
-              Саме тому наша колекція — це більше, ніж продукти. Це запрошення насолоджуватися життям неспішно.
-            </p>
+              {text('about', 'text9')}</p>
             <a href="#catalog" className="text-link">
-              Знайти свій смак <ArrowUpRight size={19} />
+              {text('about', 'text10')}<ArrowUpRight size={19} />
             </a>
             <div className="story-flower">
               <RoeMark />
             </div>
           </div>
-        </section>
+        </section>}
 
-        <section className="featured-section">
+        {visible('featured') && <section className="featured-section">
           <div className="container featured-inner">
             <div className="featured-copy">
-              <span className="eyebrow">СПРАВЖНІЙ СМАК IKRA DELUXE</span>
+              <span className="eyebrow">{text('featured', 'text1')}</span>
               <h2>
-                Фірмовий смак.
-                <br />
-                <em>Особливі миті.</em>
+                {text('featured', 'text2')}<br />
+                <em>{text('featured', 'text3')}</em>
               </h2>
-              <p>Насолода, якою хочеться поділитися. Виберіть найкраще для себе та тих, кого любите.</p>
+              <p>{text('featured', 'text4')}</p>
               <button onClick={() => (featured ? add(featured.id) : setCartOpen(true))} className="btn-gold">
-                Замовити зараз <ArrowUpRight size={18} />
+                {text('featured', 'text5')}<ArrowUpRight size={18} />
               </button>
             </div>
 
@@ -444,20 +408,20 @@ export default function HomePage() {
               <span className="featured-round">
                 <RoeMark />
               </span>
-              <img src="/products/brand-jar.webp" alt="Фірмова банка IKRA DeLuxe" />
-              <span className="featured-tag">CURATED WITH CARE</span>
+              <img src={text('featured', 'field6')} alt={text('featured', 'field7')} />
+              <span className="featured-tag">{text('featured', 'text8')}</span>
             </div>
           </div>
-        </section>
+        </section>}
 
-        <section id="delivery" className="section delivery-section">
+        {visible('delivery') && <section id="delivery" className="section delivery-section">
           <div className="container">
             <div className="center-heading">
-              <span className="eyebrow">ТУРБОТА В КОЖНІЙ ДЕТАЛІ</span>
+              <span className="eyebrow">{text('delivery', 'text1')}</span>
               <h2>
-                Так просто <em>потішити себе.</em>
+                {text('delivery', 'text2')}<em>{text('delivery', 'text3')}</em>
               </h2>
-              <p>Від першого кліку до вашого столу — все продумано.</p>
+              <p>{text('delivery', 'text4')}</p>
             </div>
 
             <div className="steps">
@@ -466,8 +430,8 @@ export default function HomePage() {
                 <div className="step-icon">
                   <Check />
                 </div>
-                <h3>Оберіть улюблене</h3>
-                <p>Додайте делікатеси до кошика та оформіть замовлення.</p>
+                <h3>{text('delivery', 'text5')}</h3>
+                <p>{text('delivery', 'text6')}</p>
               </div>
 
               <div className="step">
@@ -475,8 +439,8 @@ export default function HomePage() {
                 <div className="step-icon">
                   <ShieldCheck />
                 </div>
-                <h3>Ми все уточнимо</h3>
-                <p>Менеджер зв'яжеться з вами для підтвердження деталей.</p>
+                <h3>{text('delivery', 'text7')}</h3>
+                <p>{text('delivery', 'text8')}</p>
               </div>
 
               <div className="step">
@@ -484,19 +448,19 @@ export default function HomePage() {
                 <div className="step-icon">
                   <Truck />
                 </div>
-                <h3>Отримайте насолоду</h3>
-                <p>Оберіть зручний спосіб доставки та насолоджуйтесь.</p>
+                <h3>{text('delivery', 'text9')}</h3>
+                <p>{text('delivery', 'text10')}</p>
               </div>
             </div>
           </div>
-        </section>
+        </section>}
 
-        <section className="quote-section">
+        {visible('quotes') && quoteItems.length > 0 && <section className="quote-section">
           <div className="container quote-inner">
             <RoeMark className="quote-roe" />
-            <span className="eyebrow">МИСТЕЦТВО ЖИТИ КРАСИВО</span>
+            <span className="eyebrow">{text('quotes', 'text1')}</span>
 
-            <div className="quote-slider" key={currentQuote.id}>
+            <div className="quote-slider" key={quoteIndex}>
               <blockquote>
                 “{currentQuote.text} <em>{currentQuote.accent}</em>”
               </blockquote>
@@ -504,11 +468,11 @@ export default function HomePage() {
             </div>
 
             <div className="quote-bottom quote-bottom--carousel">
-              <span>— IKRA DeLuxe</span>
+              <span>{text('quotes', 'text2')}</span>
               <div className="quote-dots" aria-label="Перемикання цитат">
-                {quoteItems.map((item, index) => (
+                {quoteItems.map((_, index) => (
                   <button
-                    key={item.id}
+                    key={index}
                     type="button"
                     className={index === quoteIndex ? 'active' : ''}
                     onClick={() => setQuoteIndex(index)}
@@ -518,95 +482,96 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-        </section>
+        </section>}
 
-        <LuxuryFaq />
+        {visible('reviews') && items('reviews').length > 0 && <ReviewsCarousel />}
+        {visible('faq') && items('faq').length > 0 && <LuxuryFaq />}
 
-        <section className="instagram-feature" id="instagram">
+        {visible('instagram') && <section className="instagram-feature" id="instagram">
           <div className="container instagram-feature__inner">
             <div className="instagram-feature__copy">
-              <span className="eyebrow">НАШ СВІТ У КАДРІ</span>
+              <span className="eyebrow">{text('instagram', 'text1')}</span>
               <h2>
-                Естетика бренду — <em>в Instagram.</em>
+                {text('instagram', 'text2')}<em>{text('instagram', 'text3')}</em>
               </h2>
               <p>
-                Новинки колекції, красиві деталі, натхнення до святкового столу та атмосфера IKRA DeLuxe. Завітайте до
-                нас і залишайтесь поруч.
-              </p>
+                {text('instagram', 'text4')}</p>
               <a
-                href="https://www.instagram.com/_ikra_deluxe_ua/"
+                href={contacts.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="instagram-feature__link"
               >
-                <Instagram size={20} /> @_ikra_deluxe_ua <ArrowUpRight size={20} />
+                <Instagram size={20} /> {text('instagram', 'text5')}<ArrowUpRight size={20} />
               </a>
             </div>
 
             <div className="instagram-feature__photos">
-              <img src="/products/salmon.webp" alt="Червона ікра IKRA DeLuxe" loading="lazy" />
-              <img src="/products/brand-jar.webp" alt="Фірмова банка ікри" loading="lazy" />
-              <img src="/products/keta.webp" alt="Ікра кети" loading="lazy" />
+              <img src={text('instagram', 'field6')} alt={text('instagram', 'field7')} loading="lazy" />
+              <img src={text('instagram', 'field8')} alt={text('instagram', 'field9')} loading="lazy" />
+              <img src={text('instagram', 'field10')} alt={text('instagram', 'field11')} loading="lazy" />
             </div>
           </div>
-        </section>
+        </section>}
 
-        <section className="contact-strip">
+        {visible('cta') && <section className="contact-strip">
           <div className="container contact-inner">
             <div>
-              <span className="eyebrow">СТВОРЮЙТЕ СВОЇ МИТІ</span>
+              <span className="eyebrow">{text('cta', 'text1')}</span>
               <h2>
-                Час обрати <em>особливе.</em>
+                {text('cta', 'text2')}<em>{text('cta', 'text3')}</em>
               </h2>
             </div>
             <a href="#catalog" className="btn-gold">
-              До колекції <ArrowUpRight size={19} />
+              {text('cta', 'text4')}<ArrowUpRight size={19} />
             </a>
           </div>
-        </section>
+        </section>}
       </main>
 
-      <footer className="footer">
+      {visible('footer') && <footer className="footer">
         <div className="container footer-top footer-top--public">
           <div className="footer-brand">
             <div className="brand">
-              <img className="brand-logo" src="/ikra-deluxe-logo.png" alt="IKRA DeLuxe" />
+              <img className="brand-logo" src={text('seo', 'logo')} alt={text('footer', 'field1')} />
               <span className="brand-type">
-                <strong>IKRA</strong>
-                <small>DeLuxe</small>
+                <strong>{text('footer', 'text2')}</strong>
+                <small>{text('footer', 'text3')}</small>
               </span>
             </div>
-            <p>Вишукана колекція для моментів, які хочеться запам’ятати.</p>
+            <p>{text('footer', 'text4')}</p>
           </div>
 
           <div>
-            <h4>НАВІГАЦІЯ</h4>
-            <a href="#catalog">Каталог</a>
-            <a href="#offers">Акції</a>
-            <a href="#about">Про нас</a>
-            <a href="#delivery">Доставка</a>
+            <h4>{text('footer', 'text5')}</h4>
+            <a href="#catalog">{text('footer', 'text6')}</a>
+            <a href="#offers">{text('footer', 'text7')}</a>
+            <a href="#about">{text('footer', 'text8')}</a>
+            <a href="#delivery">{text('footer', 'text9')}</a>
           </div>
 
           <div>
-            <h4>КОНТАКТИ</h4>
-            <a href={CONTACT_PHONE_HREF} className="footer-phone"><Phone size={16} /> {CONTACT_PHONE_DISPLAY}</a>
-            <a href="https://www.instagram.com/_ikra_deluxe_ua/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
-            <span className="footer-note">Зв’яжіться з нами — допоможемо з вибором.</span>
+            <h4>{text('footer', 'text10')}</h4>
+            <a href={contacts.phoneHref} className="footer-phone"><Phone size={16} /> {contacts.phone}</a>
+            <a href={contacts.instagram} target="_blank" rel="noopener noreferrer">{text('footer', 'text11')}</a>
+            <a href={contacts.tiktok} target="_blank" rel="noopener noreferrer">{text('footer', 'text12')}</a>
+            <span className="footer-note">{text('footer', 'text13')}</span>
           </div>
 
           <div>
-            <h4>ІНФОРМАЦІЯ</h4>
-            <a href="#faq">Поширені питання</a>
-            <a href="#top">Повернутися нагору ↑</a>
+            <h4>{text('footer', 'text14')}</h4>
+            <a href="#faq">{text('footer', 'text15')}</a>
+            <a href="#top">{text('footer', 'text16')}</a>
           </div>
         </div>
 
         <div className="container footer-bottom">
-          <span>© {new Date().getFullYear()} IKRA DeLuxe. Усі права захищені.</span>
-          <span>З ЛЮБОВ’Ю ДО КОЖНОЇ ДЕТАЛІ</span>
-          <a href="#top">НАГОРУ ↑</a>
+          <span>© {new Date().getFullYear()} {text('footer', 'text17')}</span>
+          <span>{text('footer', 'text18')}</span>
+          <a href="#top">{text('footer', 'text19')}</a>
         </div>
-      </footer>
+      </footer>}
+      {visible('contacts') && <ContactWidget />}
     </>
   );
 }

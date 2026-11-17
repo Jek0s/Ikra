@@ -1,0 +1,1324 @@
+[
+  {
+    "id": "header",
+    "title": "Шапка та меню",
+    "description": "Телефон, верхній рядок і назви пунктів меню.",
+    "fields": [
+      {
+        "key": "text1",
+        "label": "Підпис",
+        "value": "Відкрийте смак особливих моментів •",
+        "type": "text"
+      },
+      {
+        "key": "text2",
+        "label": "Підпис",
+        "value": "ДОСТАВКА ПО УКРАЇНІ",
+        "type": "text"
+      },
+      {
+        "key": "field3",
+        "label": "Опис фото",
+        "value": "IKRA DeLuxe",
+        "type": "text"
+      },
+      {
+        "key": "text4",
+        "label": "Підпис",
+        "value": "IKRA",
+        "type": "text"
+      },
+      {
+        "key": "text5",
+        "label": "Підпис",
+        "value": "DeLuxe",
+        "type": "text"
+      },
+      {
+        "key": "text6",
+        "label": "Підпис",
+        "value": "Кошик",
+        "type": "text"
+      },
+      {
+        "key": "navCatalog",
+        "label": "Меню: каталог",
+        "value": "Каталог",
+        "type": "text"
+      },
+      {
+        "key": "navOffers",
+        "label": "Меню: акції",
+        "value": "Акції",
+        "type": "text"
+      },
+      {
+        "key": "navAbout",
+        "label": "Меню: про нас",
+        "value": "Про нас",
+        "type": "text"
+      },
+      {
+        "key": "navDelivery",
+        "label": "Меню: доставка",
+        "value": "Доставка",
+        "type": "text"
+      },
+      {
+        "key": "navFaq",
+        "label": "Меню: питання",
+        "value": "FAQ",
+        "type": "text"
+      }
+    ],
+    "itemFields": [],
+    "items": []
+  },
+  {
+    "id": "ticker",
+    "title": "Рухомий рядок",
+    "description": "Короткі повідомлення над головним екраном.",
+    "fields": [
+      {
+        "key": "text1",
+        "label": "Виділений текст",
+        "value": "✦",
+        "type": "text"
+      }
+    ],
+    "itemFields": [
+      {
+        "key": "text",
+        "label": "Повідомлення",
+        "type": "text"
+      }
+    ],
+    "items": [
+      {
+        "text": "1+1=3 · третя баночка у подарунок"
+      },
+      {
+        "text": "Maxi · 7 смаків за 1 999 ₴"
+      },
+      {
+        "text": "Оплата при отриманні"
+      },
+      {
+        "text": "Нова пошта · по всій Україні"
+      }
+    ]
+  },
+  {
+    "id": "promotion",
+    "title": "Акційний банер",
+    "description": "Пропозиція з таймером і кнопкою.",
+    "fields": [
+      {
+        "key": "text3",
+        "label": "Підпис 1",
+        "value": " КОМПЛІМЕНТ ДО ВАШОГО СТОЛУ",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text4",
+        "label": "Заголовок",
+        "value": "Дві баночки обираєте. ",
+        "type": "text"
+      },
+      {
+        "key": "text5",
+        "label": "Виділений текст",
+        "value": "Третю даруємо.",
+        "type": "text"
+      },
+      {
+        "key": "text9",
+        "label": "Підпис 2",
+        "value": "До оновлення пропозицій",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text10",
+        "label": "Підпис 3",
+        "value": "Новий цикл — кожні 3 дні",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text11",
+        "label": "Текст кнопки / посилання",
+        "value": "Обрати набір ",
+        "type": "text"
+      },
+      {
+        "key": "formula",
+        "label": "Формула акції",
+        "value": "1+1=3",
+        "type": "text"
+      },
+      {
+        "key": "description",
+        "label": "Опис пропозиції",
+        "value": "Відкрийте акційні набори 1+1=3 та знайдіть своє поєднання смаків.",
+        "type": "textarea"
+      }
+    ],
+    "itemFields": [],
+    "items": []
+  },
+  {
+    "id": "hero",
+    "title": "Головний екран",
+    "description": "Перший екран, головний текст і фото.",
+    "fields": [
+      {
+        "key": "text1",
+        "label": "Підпис 1",
+        "value": " IKRA DELUXE · PREMIUM COLLECTION ",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text2",
+        "label": "Опис 1",
+        "value": "Делікатеси для виняткових моментів",
+        "type": "text"
+      },
+      {
+        "key": "text3",
+        "label": "Заголовок 1",
+        "value": "IKRA ",
+        "type": "text"
+      },
+      {
+        "key": "text4",
+        "label": "Виділений текст",
+        "value": "DeLuxe.",
+        "type": "text"
+      },
+      {
+        "key": "text5",
+        "label": "Заголовок 2",
+        "value": "Мистецтво",
+        "type": "text"
+      },
+      {
+        "key": "text6",
+        "label": "Заголовок 3",
+        "value": "насолоди.",
+        "type": "text"
+      },
+      {
+        "key": "text7",
+        "label": "Опис 2",
+        "value": "Справжня ікра, естетика кожної деталі та особливе задоволення від першої до останньої ікринки. Відкрийте колекцію IKRA DeLuxe.",
+        "type": "textarea"
+      },
+      {
+        "key": "text8",
+        "label": "Текст кнопки / посилання 1",
+        "value": "Обрати делікатеси ",
+        "type": "text"
+      },
+      {
+        "key": "text9",
+        "label": "Текст кнопки / посилання 2",
+        "value": "Наш підхід",
+        "type": "text"
+      },
+      {
+        "key": "text10",
+        "label": "Підпис 2",
+        "value": " Уважний відбір",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text11",
+        "label": "Підпис 3",
+        "value": " Доставка по Україні",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text12",
+        "label": "Підпис 4",
+        "value": "IKRA",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "field13",
+        "label": "Фото",
+        "value": "/ikra-deluxe-logo.png",
+        "type": "image"
+      },
+      {
+        "key": "field14",
+        "label": "Опис фото",
+        "value": "Фірмова кришка IKRA DeLuxe",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text15",
+        "label": "Підпис 5",
+        "value": "IKRA",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text16",
+        "label": "Підпис 6",
+        "value": "DELUXE ",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text17",
+        "label": "Підпис 7",
+        "value": "IKRA DeLuxe",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text18",
+        "label": "Підпис 8",
+        "value": " THE TASTE OF LUXURY",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text19",
+        "label": "Підпис 9",
+        "value": "IKRA DELUXE · ВИШУКАНІ ДЕЛІКАТЕСИ",
+        "type": "text",
+        "advanced": true
+      }
+    ],
+    "itemFields": [],
+    "items": []
+  },
+  {
+    "id": "benefits",
+    "title": "Переваги",
+    "description": "Чотири переваги під головним екраном.",
+    "fields": [
+      {
+        "key": "text1",
+        "label": "Підпис 1",
+        "value": "Культура смаку",
+        "type": "text"
+      },
+      {
+        "key": "text2",
+        "label": "Підпис 2",
+        "value": "Ретельна селекція",
+        "type": "text"
+      },
+      {
+        "key": "text3",
+        "label": "Підпис 3",
+        "value": "Турботлива упаковка",
+        "type": "text"
+      },
+      {
+        "key": "text4",
+        "label": "Підпис 4",
+        "value": "Для особливих подій",
+        "type": "text"
+      }
+    ],
+    "itemFields": [],
+    "items": []
+  },
+  {
+    "id": "promo",
+    "title": "Блок акцій",
+    "description": "Заголовок та опис спеціальних пропозицій.",
+    "fields": [
+      {
+        "key": "text1",
+        "label": "Підпис 1",
+        "value": "АКЦІЇ IKRA DELUXE",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text2",
+        "label": "Заголовок",
+        "value": "Вигода, що ",
+        "type": "text"
+      },
+      {
+        "key": "text3",
+        "label": "Виділений текст",
+        "value": "виглядає розкішно.",
+        "type": "text"
+      },
+      {
+        "key": "text4",
+        "label": "Опис",
+        "value": "Ми підготували спеціальні акції для тих, хто хоче замовити більше та обрати вигідніше. Преміальні набори, красиві поєднання смаків і особливі ціни — усе в дусі IKRA DeLuxe.",
+        "type": "textarea"
+      },
+      {
+        "key": "text5",
+        "label": "Текст кнопки / посилання 1",
+        "value": "Переглянути акції ",
+        "type": "text"
+      },
+      {
+        "key": "text6",
+        "label": "Текст кнопки / посилання 2",
+        "value": "Instagram бренду",
+        "type": "text"
+      },
+      {
+        "key": "text7",
+        "label": "Підпис 2",
+        "value": " ₴",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text8",
+        "label": "Підпис 3",
+        "value": " ₴",
+        "type": "text",
+        "advanced": true
+      }
+    ],
+    "itemFields": [],
+    "items": []
+  },
+  {
+    "id": "offers",
+    "title": "Заголовок наборів",
+    "description": "Тексти над каруселлю. Самі набори — у вкладці «Акції».",
+    "fields": [
+      {
+        "key": "text1",
+        "label": "Підпис 1",
+        "value": "АКЦІЙНІ НАБОРИ",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text2",
+        "label": "Заголовок",
+        "value": "Готові рішення для ",
+        "type": "text"
+      },
+      {
+        "key": "text3",
+        "label": "Виділений текст",
+        "value": "вигідного замовлення.",
+        "type": "text"
+      },
+      {
+        "key": "text4",
+        "label": "Опис",
+        "value": "Оберіть набір, який ідеально підійде для себе, у подарунок або до святкового столу.",
+        "type": "text"
+      },
+      {
+        "key": "text5",
+        "label": "Підпис 2",
+        "value": "НАБІР IKRA DELUXE",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text6",
+        "label": "Підпис 3",
+        "value": " ₴",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text7",
+        "label": "Підпис 4",
+        "value": " ₴",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text8",
+        "label": "Текст кнопки / посилання",
+        "value": "Замовити ",
+        "type": "text"
+      }
+    ],
+    "itemFields": [],
+    "items": []
+  },
+  {
+    "id": "catalog",
+    "title": "Заголовок каталогу",
+    "description": "Тексти та назви категорій. Товари — у вкладці «Товари».",
+    "fields": [
+      {
+        "key": "text1",
+        "label": "Підпис",
+        "value": "КОЛЕКЦІЯ IKRA DELUXE",
+        "type": "text"
+      },
+      {
+        "key": "text2",
+        "label": "Заголовок",
+        "value": "Виняткове — ",
+        "type": "text"
+      },
+      {
+        "key": "text3",
+        "label": "Виділений текст",
+        "value": "поруч.",
+        "type": "text"
+      },
+      {
+        "key": "text4",
+        "label": "Опис",
+        "value": "Виберіть делікатес для вашого особливого моменту.",
+        "type": "text"
+      },
+      {
+        "key": "text5",
+        "label": "Підпис",
+        "value": "ОБРАНО З ЛЮБОВ’Ю ",
+        "type": "text"
+      },
+      {
+        "key": "text6",
+        "label": "Опис",
+        "value": "Помилка завантаження: ",
+        "type": "text"
+      },
+      {
+        "key": "text7",
+        "label": "Опис",
+        "value": "Завантажуємо колекцію...",
+        "type": "text"
+      },
+      {
+        "key": "text8",
+        "label": "Підпис",
+        "value": "У цій категорії поки немає товарів.",
+        "type": "text"
+      },
+      {
+        "key": "all",
+        "label": "Категорія: всі товари",
+        "value": "Вся колекція",
+        "type": "text"
+      },
+      {
+        "key": "red",
+        "label": "Категорія: червона ікра",
+        "value": "Червона ікра",
+        "type": "text"
+      },
+      {
+        "key": "black",
+        "label": "Категорія: чорна ікра",
+        "value": "Чорна ікра",
+        "type": "text"
+      },
+      {
+        "key": "other",
+        "label": "Категорія: інша ікра",
+        "value": "Щука та голець",
+        "type": "text"
+      },
+      {
+        "key": "sets",
+        "label": "Категорія: набори",
+        "value": "Подарункові набори",
+        "type": "text"
+      }
+    ],
+    "itemFields": [],
+    "items": []
+  },
+  {
+    "id": "about",
+    "title": "Про нас",
+    "description": "Історія магазину та фотографія.",
+    "fields": [
+      {
+        "key": "field1",
+        "label": "Фото",
+        "value": "/products/paddlefish.webp",
+        "type": "image"
+      },
+      {
+        "key": "field2",
+        "label": "Опис фото",
+        "value": "Ікра веслоноса",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text3",
+        "label": "Підпис 1",
+        "value": "GOOD TASTE IS TIMELESS ",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text4",
+        "label": "Підпис 2",
+        "value": "ФІЛОСОФІЯ СМАКУ",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text5",
+        "label": "Заголовок 1",
+        "value": "Розкіш — ",
+        "type": "text"
+      },
+      {
+        "key": "text6",
+        "label": "Виділений текст",
+        "value": "у простих",
+        "type": "text"
+      },
+      {
+        "key": "text7",
+        "label": "Заголовок 2",
+        "value": " моментах.",
+        "type": "text"
+      },
+      {
+        "key": "text8",
+        "label": "Опис 1",
+        "value": "Ми віримо, що особливі миті народжуються з деталей: красиво накритий стіл, близькі поруч та смак, заради якого хочеться зупинити час.",
+        "type": "textarea"
+      },
+      {
+        "key": "text9",
+        "label": "Опис 2",
+        "value": "Саме тому наша колекція — це більше, ніж продукти. Це запрошення насолоджуватися життям неспішно.",
+        "type": "textarea"
+      },
+      {
+        "key": "text10",
+        "label": "Текст кнопки / посилання",
+        "value": "Знайти свій смак ",
+        "type": "text"
+      }
+    ],
+    "itemFields": [],
+    "items": []
+  },
+  {
+    "id": "featured",
+    "title": "Рекомендація",
+    "description": "Блок із фірмовою баночкою та кнопкою замовлення.",
+    "fields": [
+      {
+        "key": "text1",
+        "label": "Підпис 1",
+        "value": "СПРАВЖНІЙ СМАК IKRA DELUXE",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text2",
+        "label": "Заголовок",
+        "value": "Фірмовий смак.",
+        "type": "text"
+      },
+      {
+        "key": "text3",
+        "label": "Виділений текст",
+        "value": "Особливі миті.",
+        "type": "text"
+      },
+      {
+        "key": "text4",
+        "label": "Опис",
+        "value": "Насолода, якою хочеться поділитися. Виберіть найкраще для себе та тих, кого любите.",
+        "type": "text"
+      },
+      {
+        "key": "text5",
+        "label": "Текст кнопки / посилання",
+        "value": "Замовити зараз ",
+        "type": "text"
+      },
+      {
+        "key": "field6",
+        "label": "Фото",
+        "value": "/products/brand-jar.webp",
+        "type": "image"
+      },
+      {
+        "key": "field7",
+        "label": "Опис фото",
+        "value": "Фірмова банка IKRA DeLuxe",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text8",
+        "label": "Підпис 2",
+        "value": "CURATED WITH CARE",
+        "type": "text",
+        "advanced": true
+      }
+    ],
+    "itemFields": [],
+    "items": []
+  },
+  {
+    "id": "delivery",
+    "title": "Доставка й оплата",
+    "description": "Три кроки оформлення та отримання замовлення.",
+    "fields": [
+      {
+        "key": "text1",
+        "label": "Підпис",
+        "value": "ТУРБОТА В КОЖНІЙ ДЕТАЛІ",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text2",
+        "label": "Заголовок 1",
+        "value": "Так просто ",
+        "type": "text"
+      },
+      {
+        "key": "text3",
+        "label": "Виділений текст",
+        "value": "потішити себе.",
+        "type": "text"
+      },
+      {
+        "key": "text4",
+        "label": "Опис 1",
+        "value": "Від першого кліку до вашого столу — все продумано.",
+        "type": "text"
+      },
+      {
+        "key": "text5",
+        "label": "Заголовок 2",
+        "value": "Оберіть улюблене",
+        "type": "text"
+      },
+      {
+        "key": "text6",
+        "label": "Опис 2",
+        "value": "Додайте делікатеси до кошика та оформіть замовлення.",
+        "type": "text"
+      },
+      {
+        "key": "text7",
+        "label": "Заголовок 3",
+        "value": "Ми все уточнимо",
+        "type": "text"
+      },
+      {
+        "key": "text8",
+        "label": "Опис 3",
+        "value": "Менеджер зв'яжеться з вами для підтвердження деталей.",
+        "type": "text"
+      },
+      {
+        "key": "text9",
+        "label": "Заголовок 4",
+        "value": "Отримайте насолоду",
+        "type": "text"
+      },
+      {
+        "key": "text10",
+        "label": "Опис 4",
+        "value": "Оберіть зручний спосіб доставки та насолоджуйтесь.",
+        "type": "text"
+      }
+    ],
+    "itemFields": [],
+    "items": []
+  },
+  {
+    "id": "quotes",
+    "title": "Цитати",
+    "description": "Тексти, що змінюються в блоці цитат.",
+    "fields": [
+      {
+        "key": "text1",
+        "label": "Підпис 1",
+        "value": "МИСТЕЦТВО ЖИТИ КРАСИВО",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text2",
+        "label": "Підпис 2",
+        "value": "— IKRA DeLuxe",
+        "type": "text",
+        "advanced": true
+      }
+    ],
+    "itemFields": [
+      {
+        "key": "text",
+        "label": "Текст цитати",
+        "type": "textarea"
+      },
+      {
+        "key": "accent",
+        "label": "Виділений текст",
+        "type": "textarea"
+      },
+      {
+        "key": "detail",
+        "label": "Підпис",
+        "type": "textarea"
+      }
+    ],
+    "items": [
+      {
+        "id": "q1",
+        "text": "Найкращі моменти — ті, у яких ми дозволяємо собі",
+        "accent": "трохи більше.",
+        "detail": "IKRA DeLuxe — для моментів, які хочеться смакувати повільно."
+      },
+      {
+        "id": "q2",
+        "text": "Справжня розкіш починається з уваги до деталей і",
+        "accent": "чесного смаку.",
+        "detail": "Ми віримо в красиву подачу, якісний продукт і особливу атмосферу."
+      },
+      {
+        "id": "q3",
+        "text": "Мистецтво жити красиво — це вміти обирати для себе",
+        "accent": "найкраще.",
+        "detail": "Саме тому колекція IKRA DeLuxe створена для тих, хто цінує естетику."
+      }
+    ]
+  },
+  {
+    "id": "reviews",
+    "title": "Відгуки",
+    "description": "Імена, міста, товари та тексти відгуків.",
+    "fields": [
+      {
+        "key": "text1",
+        "label": "Підпис",
+        "value": "ІСТОРІЇ ЗІ СМАКОМ",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text2",
+        "label": "Заголовок",
+        "value": "Миті, якими ",
+        "type": "text"
+      },
+      {
+        "key": "text3",
+        "label": "Виділений текст",
+        "value": "діляться.",
+        "type": "text"
+      },
+      {
+        "key": "text4",
+        "label": "Опис",
+        "value": "Демонстраційні відгуки",
+        "type": "text"
+      }
+    ],
+    "itemFields": [
+      {
+        "key": "name",
+        "label": "Ім’я",
+        "type": "text"
+      },
+      {
+        "key": "city",
+        "label": "Місто",
+        "type": "text"
+      },
+      {
+        "key": "product",
+        "label": "Товар",
+        "type": "text"
+      },
+      {
+        "key": "text",
+        "label": "Відгук",
+        "type": "textarea"
+      }
+    ],
+    "items": [
+      {
+        "name": "Олена",
+        "city": "Київ",
+        "product": "Кета преміум",
+        "text": "Обрала кету до сімейної вечері. Ніжний смак і дуже красива подача — саме те, чого хотілося для особливого вечора."
+      },
+      {
+        "name": "Андрій",
+        "city": "Львів",
+        "product": "Набір 1+1=3",
+        "text": "Взяли набір, щоб спробувати різні смаки. Горбуша стала фаворитом, а третя баночка в подарунок — приємний бонус."
+      },
+      {
+        "name": "Марія",
+        "city": "Дніпро",
+        "product": "Maxi",
+        "text": "Сім баночок — чудова ідея для великого столу. Кожен знайшов свій смак: мені сподобалась щука, а чоловікові — веслоніс."
+      },
+      {
+        "name": "Ірина",
+        "city": "Одеса",
+        "product": "Лосось та кижуч",
+        "text": "Сподобалося поєднати два різні смаки. Лосось ніжний, кижуч виразніший. З хрусткими тостами — маленьке свято вдома."
+      },
+      {
+        "name": "Наталія",
+        "city": "Вінниця",
+        "product": "Голець",
+        "text": "Вирішила спробувати золотисту ікру гольця. Виглядає незвично та гарно доповнює святкові закуски. Хочеться відкрити й інші смаки."
+      }
+    ]
+  },
+  {
+    "id": "faq",
+    "title": "Питання та відповіді",
+    "description": "Заголовок блоку та список відповідей покупцям.",
+    "fields": [
+      {
+        "key": "text1",
+        "label": "Підпис 1",
+        "value": "ВІДПОВІДІ З ТУРБОТОЮ",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text2",
+        "label": "Заголовок",
+        "value": "Кожна деталь ",
+        "type": "text"
+      },
+      {
+        "key": "text3",
+        "label": "Виділений текст",
+        "value": "має значення.",
+        "type": "text"
+      },
+      {
+        "key": "text4",
+        "label": "Опис",
+        "value": "Від першого знайомства до моменту, коли делікатес опиниться на вашому столі.",
+        "type": "text"
+      },
+      {
+        "key": "field5",
+        "label": "Фото",
+        "value": "/products/brand-jar.webp",
+        "type": "image"
+      },
+      {
+        "key": "field6",
+        "label": "Опис фото",
+        "value": "Фірмова баночка червоної ікри IKRA DeLuxe",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text7",
+        "label": "Підпис 2",
+        "value": "IKRA DELUXE · СМАК ОСОБЛИВИХ МИТЕЙ",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text8",
+        "label": "Підпис 3",
+        "value": "ВСЕ, ЩО ВАРТО ЗНАТИ",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text9",
+        "label": "Підпис 4",
+        "value": "Залишились запитання?",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text10",
+        "label": "Підпис 5",
+        "value": "Завітайте до нашого Instagram",
+        "type": "text",
+        "advanced": true
+      }
+    ],
+    "itemFields": [
+      {
+        "key": "question",
+        "label": "Питання",
+        "type": "text"
+      },
+      {
+        "key": "answer",
+        "label": "Відповідь",
+        "type": "textarea"
+      }
+    ],
+    "items": [
+      {
+        "question": "Чи потрібно вносити передоплату?",
+        "answer": "Передоплата не потрібна. Сплачуйте після отримання у відділенні Нової пошти — перед оплатою можна оглянути замовлення."
+      },
+      {
+        "question": "Як довго чекати на доставку та яка її вартість?",
+        "answer": "Надсилаємо замовлення Новою поштою по Україні. Зазвичай дорога займає 1–2 дні, точний термін залежить від перевізника. Доставку оплачуєте за його тарифами."
+      },
+      {
+        "question": "Чи можна обрати смаки для набору?",
+        "answer": "У наборах із 3 та 5 баночок можна поєднати різні смаки або обрати однакові. Залиште побажання в коментарі до замовлення чи узгодьте їх із менеджером. Maxi містить усі 7 видів — по одній баночці кожного. У Maxi одна баночка коштує приблизно 286 грн."
+      },
+      {
+        "question": "Як зберігати ікру?",
+        "answer": "У холодильнику при температурі до +5 °C. Закрита банка зберігається 4 місяці, відкрита — 2 тижні."
+      },
+      {
+        "question": "Яка вага однієї баночки?",
+        "answer": "Кожна баночка містить 500 г ікри — це маса продукту без урахування тари. У наборі Maxi — 7 баночок, разом 3,5 кг."
+      }
+    ]
+  },
+  {
+    "id": "instagram",
+    "title": "Instagram",
+    "description": "Текст і фотографії соціального блоку.",
+    "fields": [
+      {
+        "key": "text1",
+        "label": "Підпис",
+        "value": "НАШ СВІТ У КАДРІ",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text2",
+        "label": "Заголовок",
+        "value": "Естетика бренду — ",
+        "type": "text"
+      },
+      {
+        "key": "text3",
+        "label": "Виділений текст",
+        "value": "в Instagram.",
+        "type": "text"
+      },
+      {
+        "key": "text4",
+        "label": "Опис",
+        "value": "Новинки колекції, красиві деталі, натхнення до святкового столу та атмосфера IKRA DeLuxe. Завітайте до нас і залишайтесь поруч.",
+        "type": "textarea"
+      },
+      {
+        "key": "text5",
+        "label": "Текст кнопки / посилання",
+        "value": " @_ikra_deluxe_ua ",
+        "type": "text"
+      },
+      {
+        "key": "field6",
+        "label": "Фото 1",
+        "value": "/products/salmon.webp",
+        "type": "image"
+      },
+      {
+        "key": "field7",
+        "label": "Опис фото 1",
+        "value": "Червона ікра IKRA DeLuxe",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "field8",
+        "label": "Фото 2",
+        "value": "/products/brand-jar.webp",
+        "type": "image"
+      },
+      {
+        "key": "field9",
+        "label": "Опис фото 2",
+        "value": "Фірмова банка ікри",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "field10",
+        "label": "Фото 3",
+        "value": "/products/keta.webp",
+        "type": "image"
+      },
+      {
+        "key": "field11",
+        "label": "Опис фото 3",
+        "value": "Ікра кети",
+        "type": "text",
+        "advanced": true
+      }
+    ],
+    "itemFields": [],
+    "items": []
+  },
+  {
+    "id": "cta",
+    "title": "Заклик до покупки",
+    "description": "Короткий блок перед підвалом сайту.",
+    "fields": [
+      {
+        "key": "text1",
+        "label": "Підпис",
+        "value": "СТВОРЮЙТЕ СВОЇ МИТІ",
+        "type": "text",
+        "advanced": true
+      },
+      {
+        "key": "text2",
+        "label": "Заголовок",
+        "value": "Час обрати ",
+        "type": "text"
+      },
+      {
+        "key": "text3",
+        "label": "Виділений текст",
+        "value": "особливе.",
+        "type": "text"
+      },
+      {
+        "key": "text4",
+        "label": "Текст кнопки / посилання",
+        "value": "До колекції ",
+        "type": "text"
+      }
+    ],
+    "itemFields": [],
+    "items": []
+  },
+  {
+    "id": "footer",
+    "title": "Підвал сайту",
+    "description": "Підписи, навігація та інформація внизу сторінки.",
+    "fields": [
+      {
+        "key": "field1",
+        "label": "Опис фото",
+        "value": "IKRA DeLuxe",
+        "type": "text"
+      },
+      {
+        "key": "text2",
+        "label": "Підпис 1",
+        "value": "IKRA",
+        "type": "text"
+      },
+      {
+        "key": "text3",
+        "label": "Підпис 2",
+        "value": "DeLuxe",
+        "type": "text"
+      },
+      {
+        "key": "text4",
+        "label": "Опис",
+        "value": "Вишукана колекція для моментів, які хочеться запам’ятати.",
+        "type": "text"
+      },
+      {
+        "key": "text5",
+        "label": "Заголовок 1",
+        "value": "НАВІГАЦІЯ",
+        "type": "text"
+      },
+      {
+        "key": "text6",
+        "label": "Текст кнопки / посилання 1",
+        "value": "Каталог",
+        "type": "text"
+      },
+      {
+        "key": "text7",
+        "label": "Текст кнопки / посилання 2",
+        "value": "Акції",
+        "type": "text"
+      },
+      {
+        "key": "text8",
+        "label": "Текст кнопки / посилання 3",
+        "value": "Про нас",
+        "type": "text"
+      },
+      {
+        "key": "text9",
+        "label": "Текст кнопки / посилання 4",
+        "value": "Доставка",
+        "type": "text"
+      },
+      {
+        "key": "text10",
+        "label": "Заголовок 2",
+        "value": "КОНТАКТИ",
+        "type": "text"
+      },
+      {
+        "key": "text11",
+        "label": "Текст кнопки / посилання 5",
+        "value": "Instagram ↗",
+        "type": "text"
+      },
+      {
+        "key": "text12",
+        "label": "Текст кнопки / посилання 6",
+        "value": "TikTok ↗",
+        "type": "text"
+      },
+      {
+        "key": "text13",
+        "label": "Підпис 3",
+        "value": "Зв’яжіться з нами — допоможемо з вибором.",
+        "type": "text"
+      },
+      {
+        "key": "text14",
+        "label": "Заголовок 3",
+        "value": "ІНФОРМАЦІЯ",
+        "type": "text"
+      },
+      {
+        "key": "text15",
+        "label": "Текст кнопки / посилання 7",
+        "value": "Поширені питання",
+        "type": "text"
+      },
+      {
+        "key": "text16",
+        "label": "Текст кнопки / посилання 8",
+        "value": "Повернутися нагору ↑",
+        "type": "text"
+      },
+      {
+        "key": "text17",
+        "label": "Підпис 4",
+        "value": " IKRA DeLuxe. Усі права захищені.",
+        "type": "text"
+      },
+      {
+        "key": "text18",
+        "label": "Підпис 5",
+        "value": "З ЛЮБОВ’Ю ДО КОЖНОЇ ДЕТАЛІ",
+        "type": "text"
+      },
+      {
+        "key": "text19",
+        "label": "Текст кнопки / посилання 9",
+        "value": "НАГОРУ ↑",
+        "type": "text"
+      }
+    ],
+    "itemFields": [],
+    "items": []
+  },
+  {
+    "id": "contacts",
+    "title": "Контакти",
+    "description": "Телефон, соціальні мережі та месенджери по всьому сайту.",
+    "fields": [
+      {
+        "key": "phone",
+        "label": "Телефон",
+        "value": "+380 (63) 627 81 08",
+        "type": "tel"
+      },
+      {
+        "key": "instagram",
+        "label": "Instagram",
+        "value": "https://www.instagram.com/_ikra_deluxe_ua/",
+        "type": "url"
+      },
+      {
+        "key": "instagramLabel",
+        "label": "Підпис Instagram",
+        "value": "_ikra_deluxe_ua",
+        "type": "text"
+      },
+      {
+        "key": "tiktok",
+        "label": "TikTok",
+        "value": "https://www.tiktok.com/@ikradeluxe?_r=1&_t=ZN-9AbByYMyYmk",
+        "type": "url"
+      },
+      {
+        "key": "tiktokLabel",
+        "label": "Підпис TikTok",
+        "value": "@ikradeluxe",
+        "type": "text"
+      },
+      {
+        "key": "telegram",
+        "label": "Telegram (необов’язково)",
+        "value": "",
+        "type": "url"
+      },
+      {
+        "key": "widgetTitle",
+        "label": "Заголовок вікна контактів",
+        "value": "Допоможемо обрати особливе.",
+        "type": "text"
+      },
+      {
+        "key": "widgetCaption",
+        "label": "Підпис вікна контактів",
+        "value": "НА ЗВ’ЯЗКУ З ВАМИ",
+        "type": "text"
+      },
+      {
+        "key": "widgetHint",
+        "label": "Підказка біля кнопки",
+        "value": "Ми поруч",
+        "type": "text"
+      }
+    ],
+    "itemFields": [],
+    "items": []
+  },
+  {
+    "id": "seo",
+    "title": "Налаштування сайту",
+    "description": "Назва вкладки браузера, опис для пошуку та логотип.",
+    "fields": [
+      {
+        "key": "title",
+        "label": "Назва вкладки браузера",
+        "value": "IKRA DeLuxe — мистецтво смаку",
+        "type": "text"
+      },
+      {
+        "key": "description",
+        "label": "Опис для пошуку",
+        "value": "IKRA DeLuxe — колекція вишуканих делікатесів. Смак особливих моментів.",
+        "type": "textarea"
+      },
+      {
+        "key": "logo",
+        "label": "Логотип",
+        "value": "/ikra-deluxe-logo.png",
+        "type": "image"
+      }
+    ],
+    "itemFields": [],
+    "items": []
+  }
+]
